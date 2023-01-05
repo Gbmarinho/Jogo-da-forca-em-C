@@ -6,6 +6,20 @@ void limpaTela(){
     system("CLS");
 }
 
+
+
+void jogarSozinho(){
+
+    char palavras[15][25] = {"abacaxi", "manga", "morango", "cachorro", "macaco", "tubarao", "uva", "sushi", "pizza", "hamster",
+    "gato", "malzahar", "raposa", "naruto", "luffy"};
+
+    int indice_aleatorio = rand() % 15;
+    char* palavra = palavras[indice_aleatorio];
+
+    printf("A palavra secreta eh: %s", palavra);
+}
+
+
 void menuInicial(){
 
     //Opção escolhida pelo usuário
@@ -28,13 +42,13 @@ void menuInicial(){
         switch(opcao){
             case 1:
                 //Inicia o jogo
-                if(jogar(1) == 1){
+                if(1 == 1){
                     menuInicial();
                 }
                 break;
             case 2:
                 //Inicia o jogo
-                if(jogar(2) == 1){
+                if(1 == 1){
                     menuInicial();
                 }
                 break;
@@ -60,6 +74,9 @@ void menuInicial(){
 }
 
 int main(){
-    menuInicial();
+    //Para gerar números realmente aleatórios
+    srand((unsigned)time(NULL));
+
+    jogarSozinho();
     return 0;
 }
