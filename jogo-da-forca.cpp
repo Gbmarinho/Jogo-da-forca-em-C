@@ -1,22 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string>
+#include <iostream>
 #include <time.h>
+
+using namespace std;
 
 void limpaTela(){
     system("CLS");
 }
 
-
-
-void jogarSozinho(){
-
-    char palavras[15][25] = {"abacaxi", "manga", "morango", "cachorro", "macaco", "tubarao", "uva", "sushi", "pizza", "hamster",
+string palavra_aleatoria(){
+    string palavras[15] = {"abacaxi", "manga", "morango", "cachorro", "macaco", "tubarao", "uva", "sushi", "pizza", "hamster",
     "gato", "malzahar", "raposa", "naruto", "luffy"};
 
     int indice_aleatorio = rand() % 15;
-    char* palavra = palavras[indice_aleatorio];
+    string palavra = palavras[indice_aleatorio];
+    return palavra;
+}
 
-    printf("A palavra secreta eh: %s", palavra);
+int tamanho_da_palavra(string palavra){
+    return palavra.size();
+}
+
+string retorna_palavra_mascara(int tamPalavra){
+     string palavra_mascara;
+
+    int cont = 0, i;
+    for(i=0;i<tamPalavra;i++){
+        palavra_mascara += "_";
+    }
+    //printf("%s", palavra_mascara.c_str());
+    return palavra_mascara;
+}
+void jogarSozinho(){
+    string palavra = palavra_aleatoria();
+
+    int tamPalavra = tamanho_da_palavra(palavra);
+
+    string palavra_mascara = retorna_palavra_mascara(tamPalavra);
+
+    printf("%s", palavra_mascara.c_str());
+
 }
 
 
