@@ -40,7 +40,19 @@ void jogarSozinho(){
 
     string palavra_mascara = retorna_palavra_mascara(tamPalavra);
 
-    printf("%s", palavra_mascara.c_str());
+
+    int tentativas = 0, max_tentativas = tamPalavra+5;
+    char letra;
+    while(max_tentativas - tentativas > 0){
+        limpaTela();
+        printf("Palavra: %s (Tamanho: %d)", palavra_mascara.c_str(), tamPalavra);
+        printf("\nTentativas restantes: %d", (max_tentativas - tentativas));
+        printf("\nDigite uma letra: ");
+        scanf("%c", &letra);
+        fflush(stdin);
+        printf("\n");
+        tentativas = tentativas +1;
+    }
 
 }
 
