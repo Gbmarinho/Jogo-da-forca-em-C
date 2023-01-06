@@ -44,21 +44,39 @@ void jogarSozinho(){
     int tentativas = 0, max_tentativas = tamPalavra+5;
     int cont = 0;
     char letra;
+    string letras_arriscadas;
+    bool ja_digitada;
 
 
     while(palavra != palavra_mascara && max_tentativas - tentativas > 0){
         limpaTela();
+        if(ja_digitada == true){
+            printf("Letra ja foi digitada, tente outra letra diferente\n");
+        }
+        ja_digitada = false;
         printf("Palavra: %s (Tamanho: %d)", palavra_mascara.c_str(), tamPalavra);
         printf("\nTentativas restantes: %d", (max_tentativas - tentativas));
+        printf("\nLetras arriscadas: %s", letras_arriscadas.c_str());
         printf("\nDigite uma letra: ");
         scanf("%c", &letra);
-        for(cont=0;cont<tamPalavra;cont++){
-            if(palavra[cont] == letra){
-                palavra_mascara[cont] = palavra[cont];
+        for(cont=0; cont<tentativas*2;cont++){
+            if(letras_arriscadas[cont]==letra){
+                ja_digitada = true;
             }
         }
+        if(ja_digitada == false){
+            letras_arriscadas += letra;
+            letras_arriscadas += " ";
+            for(cont=0;cont<tamPalavra;cont++){
+                if(palavra[cont] == letra){
+                    palavra_mascara[cont] = palavra[cont];
+                }
+            }
+            tentativas = tentativas +1;
+        }
+
+
         fflush(stdin);
-        tentativas = tentativas +1;
     }
     if(palavra_mascara == palavra){
         limpaTela();
